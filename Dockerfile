@@ -44,7 +44,7 @@ FROM base/archlinux:latest
 RUN useradd -m -s /bin/bash xmr
 COPY --from=builder \
   /home/user/xmr-stak_cpu/xmr-stak_cpu-*-x86_64.pkg.tar.xz /tmp/.
-RUN pacman -Sy hwloc --noconfirm && \
+RUN pacman -Sy hwloc vim tree iproute2 inetutils --noconfirm && \
   pacman -U /tmp/xmr-stak_cpu-*-x86_64.pkg.tar.xz --noconfirm && \
   pacman -Scc --noconfirm
 WORKDIR /home/xmr

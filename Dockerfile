@@ -13,8 +13,9 @@ RUN \
   pacman -S base-devel git --noconfirm && \
   # Install useful tools
   pacman -S vim tree iproute2 inetutils --noconfirm && \
-  # Generate locale en_US
-  locale-gen en_US.UTF-8
+  # Generate and set locale en_US.UTF-8
+  echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen
+ENV LANG en_US.UTF-8
 
 RUN \
   # Create an user
@@ -52,6 +53,12 @@ RUN \
   pacman -Sy tmux vim tree iproute2 inetutils curl --noconfirm && \
   # Clean cache
   pacman -Scc --noconfirm
+
+# Finish
+RUN \
+  # Generate and set locale en_US.UTF-8
+  echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen
+ENV LANG en_US.UTF-8
 
 WORKDIR /home/xmr
 USER xmr

@@ -50,7 +50,7 @@ RUN \
   pacman -Sy hwloc --noconfirm && \
   pacman -U /tmp/xmr-stak_cpu-*-x86_64.pkg.tar.xz --noconfirm && \
   # Install useful packages
-  pacman -Sy tmux vim tree iproute2 inetutils curl --noconfirm && \
+  pacman -Sy vim tree iproute2 inetutils curl --noconfirm && \
   # Clean cache
   pacman -Scc --noconfirm
 
@@ -60,6 +60,8 @@ RUN \
   echo 'en_US.UTF-8 UTF-8' > /etc/locale.gen && locale-gen
 ENV LANG en_US.UTF-8
 
+ADD startup.sh /home/xmr
+
 WORKDIR /home/xmr
 USER xmr
-CMD ["/usr/bin/tmux"]
+CMD ["./startup.sh"]

@@ -22,12 +22,15 @@ fi
 if [ "x$PORT" = "x" ]; then
   PORT=0
 fi
+if [ "x$VERBOSE" = "x" ]; then
+  VERBOSE=4
+fi
 cat > config.txt <<CONFIG
 "pool_list": [
   {
     "pool_address": "$POOL",
     "wallet_address": "$WALLET",
-    "pool_password": "x",
+    "pool_password": "$POOLPWD",
     "use_nicehash": false,
     "use_tls": false,
     "tls_fingerprint": "",
@@ -38,14 +41,14 @@ cat > config.txt <<CONFIG
 "call_timeout": 10,
 "retry_time": 30,
 "giveup_limit": 0,
-"verbose_level": 4,
+"verbose_level": $VERBOSE,
 "print_motd": true,
 "h_print_time": 60,
 "aes_override": null,
 "use_slow_memory": "warn",
 "tls_secure_algo": true,
 "daemon_mode": false,
-"flush_stdout": false,
+"flush_stdout": true,
 "output_file": "output.txt",
 "httpd_port": $PORT,
 "http_login": "",

@@ -5,7 +5,7 @@ if [ "x$CPULIST" != "x" ]; then
   if [ "x$CPUPM" = "x" ]; then
     CPUPM=1
   fi
-  for cpu in $CPULIST; do
+  for cpu in $(echo $CPULIST | tr -d '"' | tr -d "'"); do
     lpm='"low_power_mode"'
     np='"no_prefetch"'
     atc='"affine_to_cpu"'
@@ -55,6 +55,12 @@ cat > config.txt <<CONFIG
 "http_pass": "",
 "prefer_ipv4": true,
 CONFIG
+
+echo '============================== config.txt =============================='
+cat config.txt
+echo '=============================== cpu.txt ================================'
+cat cpu.txt
+echo '========================================================================'
 
 if [ "x$OUTFILE" = "x" ]; then
   /usr/bin/xmr-stak

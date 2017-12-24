@@ -49,11 +49,15 @@ cat > config.txt <<CONFIG
 "tls_secure_algo": true,
 "daemon_mode": false,
 "flush_stdout": true,
-"output_file": "output.txt",
+"output_file": "",
 "httpd_port": $PORT,
 "http_login": "",
 "http_pass": "",
 "prefer_ipv4": true,
 CONFIG
 
-/usr/bin/xmr-stak
+if [ "x$OUTFILE" = "x" ]; then
+  /usr/bin/xmr-stak
+else
+  /usr/bin/xmr-stak > $OUTFILE 2>&1
+fi

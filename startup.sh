@@ -25,19 +25,24 @@ fi
 if [ "x$VERBOSE" = "x" ]; then
   VERBOSE=4
 fi
-cat > config.txt <<CONFIG
+cat > pools.txt <<POOLS
 "pool_list": [
   {
     "pool_address": "$POOL",
     "wallet_address": "$WALLET",
     "pool_password": "$POOLPWD",
+    "rig_id": "",
     "use_nicehash": false,
     "use_tls": false,
     "tls_fingerprint": "",
     "pool_weight": 1
   },
 ],
-"currency": "monero",
+
+"currency": "monero7",
+POOLS
+
+cat > config.txt <<CONFIG
 "call_timeout": 10,
 "retry_time": 30,
 "giveup_limit": 0,
@@ -56,6 +61,8 @@ cat > config.txt <<CONFIG
 "prefer_ipv4": true,
 CONFIG
 
+echo '============================== pools.txt ==============================='
+cat pools.txt
 echo '============================== config.txt =============================='
 cat config.txt
 echo '=============================== cpu.txt ================================'

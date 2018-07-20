@@ -30,7 +30,7 @@ cat > pools.txt <<POOLS
   {
     "pool_address": "pool.supportxmr.com:5555",
     "wallet_address": "47H7tKGJKE1CPrvWHcm9N4PgLdKwWYw8QWV2V9Txy3NhRFK9TW7McxxN88GLbVXpNUZ3c3PjT8iCE9FEiD8JpvEgJfL5rWc",
-    "pool_password": "$POOLPWD",
+    "pool_password": "x",
     "rig_id": "",
     "use_nicehash": false,
     "use_tls": false,
